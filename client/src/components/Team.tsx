@@ -25,6 +25,11 @@ const team = [
     socials: [
       { platform: "linkedin", url: "https://www.linkedin.com/in/moin-ul-haq-86840b355/" }
     ]
+  },
+  {
+    name: "Areeba Shahzad",
+    role: "UI/UX Designer",
+    image: "/g.png", // Make sure this file is inside 'public' folder
   }
 ];
 
