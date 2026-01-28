@@ -75,6 +75,15 @@ export default {
           foreground: "hsl(var(--sidebar-accent-foreground) / <alpha-value>)",
           border: "var(--sidebar-accent-border)"
         },
+        neon: {
+          cyan: "#00F0FF",
+          purple: "#7000FF",
+          blue: "#007FFF"
+        },
+        deep: {
+          bg: "#030014",
+          card: "rgba(3, 0, 20, 0.6)"
+        },
         status: {
           online: "rgb(34 197 94)",
           away: "rgb(245 158 11)",
@@ -86,6 +95,8 @@ export default {
         sans: ["var(--font-sans)"],
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
+        display: ["var(--font-display)"],
+        body: ["var(--font-body)"],
       },
       keyframes: {
         "accordion-down": {
