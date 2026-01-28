@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "wouter";
 import { Menu, X, Rocket } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -27,7 +26,8 @@ export function Navbar() {
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const offsetTop = element.getBoundingClientRect().top + window.pageYOffset - 100;
+      window.scrollTo({ top: offsetTop, behavior: "smooth" });
       setIsMobileMenuOpen(false);
     }
   };
@@ -36,12 +36,16 @@ export function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#030014]/80 backdrop-blur-lg border-b border-white/10 py-4"
+          ? "bg-[#030014]/90 backdrop-blur-lg border-b border-white/10 py-4"
           : "bg-transparent py-6"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-        <div className="flex items-center gap-2 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center relative">
+        {/* Logo Section */}
+        <div 
+          className="flex items-center gap-2 group cursor-pointer z-50 relative" 
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
           <div className="relative">
             <div className="absolute inset-0 bg-[#00F0FF] blur-md opacity-50 group-hover:opacity-100 transition-opacity" />
             <Rocket className="w-8 h-8 text-[#00F0FF] relative z-10" />
@@ -73,35 +77,43 @@ export function Navbar() {
           </a>
         </div>
 
-        {/* Mobile Toggle */}
+        {/* Mobile Toggle Button */}
         <button
-          className="md:hidden text-white hover:text-[#00F0FF] transition-colors"
+          className="md:hidden text-white hover:text-[#00F0FF] transition-colors z-50 relative p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <X /> : <Menu />}
+          {isMobileMenuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Dropdown */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#030014] border-b border-white/10 overflow-hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-full left-0 right-0 bg-[#030014] border-b border-white/10 shadow-2xl md:hidden block"
           >
-            <div className="px-4 py-8 space-y-4 flex flex-col items-center">
+            <div className="flex flex-col p-6 space-y-4 items-center">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => scrollToSection(e, link.href)}
-                  className="text-lg font-medium text-gray-300 hover:text-[#00F0FF] py-2"
+                  className="text-xl font-medium text-gray-300 hover:text-[#00F0FF] py-3 w-full text-center border-b border-white/5"
                 >
                   {link.name}
                 </a>
               ))}
+              <a
+                href="#contact"
+                onClick={(e) => scrollToSection(e, "#contact")}
+                className="mt-4 px-8 py-3 w-full text-center rounded-full bg-[#00F0FF] text-[#030014] font-bold"
+              >
+                Start Project
+              </a>
             </div>
           </motion.div>
         )}
