@@ -1,0 +1,54 @@
+Build a highly futuristic, visually stunning landing page for a premium Software House called "NOVA Labs". The design should be high-tech, dark-themed, and immersive—think "Cyberpunk meets Professional Digital Agency."
+
+**Tech Stack:**
+- React (Vite)
+- Tailwind CSS (for styling)
+- Framer Motion (for complex animations and scroll reveals)
+- Lucide React (for futuristic icons)
+
+**Design Language & Aesthetic:**
+- **Theme:** Deep Space Dark Mode (Hex #030014) with glowing neon accents (Cyan #00F0FF, Purple #7000FF, and Electric Blue).
+- **Effects:** Heavy use of "Glassmorphism" (frosted glass blur), glowing borders, and subtle parallax scrolling.
+- **Typography:** A sleek, sans-serif font like 'Inter' or 'Space Grotesk' for headers.
+- **Vibe:** High-end, expensive, engineering-focused, and innovative.
+
+**Page Structure & Sections:**
+
+1.  **Hero Section (The "Wow" Factor):**
+    - A massive, screen-filling background with a slow-moving animated particle grid or nebula effect.
+    - Large glowing headline: "Architecting the Future of Digital."
+    - Subheadline: "Nova Labs builds high-performance software for the world's most ambitious brands."
+    - Two Buttons: "Start a Project" (Glowing Primary) and "View Work" (Glass Secondary).
+
+2.  **About Us (The "Nova" Identity):**
+    - A sleek section explaining we are a bridge between American business needs and elite engineering.
+    - Floating cards highlighting: "Speed," "Security," and "Scalability."
+
+3.  **Services (Holographic Cards):**
+    - Use a 3D-style grid layout. Cards should glow when hovered.
+    - Services to list: Custom Web Development, Mobile Apps (Android/iOS), UI/UX Design, and Enterprise Software Solutions.
+
+4.  **The Team (Leadership):**
+    - A premium "Leadership" section.
+    - **CEO Card:** "Jahangir" - Label as "CEO & Lead Engineer". Use a placeholder for the image but make the frame look metallic/tech.
+    - **Partner Card:** "Operations Lead" (Placeholder for US Partner) - Label as "Head of Global Operations".
+    - **Dev Team:** A group icon or card representing the engineering team.
+
+5.  **Featured Projects (The Portfolio):**
+    - A "Tilt-effect" gallery. When the mouse moves over a project screenshot, it tilts slightly (3D effect).
+    - Placeholders for 3 projects:
+        - "Project Alpha" (FinTech Dashboard)
+        - "SmartGuide" (AI-Powered Mobile App)
+        - "Velox Commerce" (E-commerce Platform)
+
+6.  **Tech Stack Marquee:**
+    - An infinite scrolling ticker tape at the bottom showing logos of technologies: React, Node.js, Python, Flutter, AWS, Docker.
+
+7.  **Contact / CTA Section:**
+    - A futuristic form that looks like a command terminal or a glass HUD.
+    - Headline: "Ready to Launch?"
+
+**Behavior Requirements:**
+- Ensure the site is fully responsive (mobile-friendly).
+- Add "Reveal on Scroll" animations (elements fade in and slide up as you scroll down).
+- Make the navigation bar "Sticky" and glass-like at the top.
