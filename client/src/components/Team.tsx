@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { Linkedin, Github } from "lucide-react"; // Removed Twitter
+import { Linkedin, Github } from "lucide-react";
 
 const team = [
   {
     name: "Chaudhry Jahangir",
     role: "CEO & Founder",
-    image: "/me.png", // CHANGED to .jpg (Make sure file is me.jpg in public folder)
+    image: "/me.png", // Ensure this file exists in 'public' folder
     socials: [
       { platform: "linkedin", url: "https://www.linkedin.com/in/muhammad-jahangir-undefined-b210723a9/" }
     ]
@@ -13,7 +13,7 @@ const team = [
   {
     name: "M Hassan Riaz",
     role: "Lead Developer",
-    image: "/h.png", // Make sure this file is inside 'public' folder
+    image: "/h.png",
     socials: [
       { platform: "linkedin", url: "https://pk.linkedin.com/in/muhammad-hassan-riaz-8b5277262" }
     ]
@@ -21,7 +21,7 @@ const team = [
   {
     name: "Moin Ul Haq",
     role: "Lead Developer",
-    image: "/m.png", // Make sure this file is inside 'public' folder
+    image: "/m.png",
     socials: [
       { platform: "linkedin", url: "https://www.linkedin.com/in/moin-ul-haq-86840b355/" }
     ]
@@ -29,7 +29,8 @@ const team = [
   {
     name: "Areeba Shahzad",
     role: "UI/UX Designer",
-    image: "/g.png", // Make sure this file is inside 'public' folder
+    image: "/g.png",
+    socials: [] // ADDED THIS to prevent crash
   }
 ];
 
@@ -48,6 +49,8 @@ export function Team() {
             <h2 className="text-4xl md:text-5xl font-bold font-display text-white mb-4">The Minds Behind Nova</h2>
             <p className="text-gray-400 max-w-xl">A collective of visionaries, engineers, and strategists dedicated to pushing the boundaries of what's possible.</p>
           </motion.div>
+          
+          {/* Join Team Button */}
           <motion.button 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -69,23 +72,24 @@ export function Team() {
             >
               <div className="absolute -inset-0.5 bg-gradient-to-r from-[#00F0FF] to-[#7000FF] rounded-xl opacity-30 group-hover:opacity-100 blur transition duration-500" />
               <div className="relative h-full bg-[#030014] p-1 rounded-xl">
+                
+                {/* Image Container */}
                 <div className="relative h-[300px] overflow-hidden rounded-lg mb-4">
                   <div className="absolute inset-0 bg-[#7000FF]/20 mix-blend-overlay z-10 group-hover:bg-transparent transition-colors" />
-                  
-                  {/* ZOOM OUT FIX: Added padding (p-3) and extra rounding */}
-<img 
-  src={member.image} 
-  alt={member.name} 
-  // Add 'p-3 rounded-2xl' to the classes below
-  className="w-full h-full object-cover p-4 rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500" 
-/>
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    className="w-full h-full object-cover p-4 rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500" 
+                  />
                 </div>
+
                 <div className="p-4">
                   <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
                   <p className="text-[#00F0FF] text-sm font-medium mb-4">{member.role}</p>
                   
                   <div className="flex gap-3 text-gray-400">
-                    {member.socials.map((social, index) => (
+                    {/* SAFE GUARD: Added optional chaining (?.) just in case */}
+                    {member.socials?.map((social, index) => (
                       <a 
                         key={index}
                         href={social.url}
