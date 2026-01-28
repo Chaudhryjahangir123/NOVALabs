@@ -1,24 +1,30 @@
 import { motion } from "framer-motion";
-import { Linkedin, Twitter, Github } from "lucide-react";
+import { Linkedin, Github } from "lucide-react"; // Removed Twitter
 
 const team = [
   {
-    name: "Jahangir",
+    name: "Chaudhry Jahangir",
     role: "CEO & Founder",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop", // professional headshot
-    socials: ["linkedin", "twitter"]
+    image: "/me.png", // CHANGED to .jpg (Make sure file is me.jpg in public folder)
+    socials: [
+      { platform: "linkedin", url: "https://www.linkedin.com/in/muhammad-jahangir-undefined-b210723a9/" }
+    ]
   },
   {
-    name: "Sarah Chen",
-    role: "Lead Operations",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop", // professional headshot
-    socials: ["linkedin"]
+    name: "M Hassan Riaz",
+    role: "Lead Developer",
+    image: "/h.png", // Make sure this file is inside 'public' folder
+    socials: [
+      { platform: "linkedin", url: "https://pk.linkedin.com/in/muhammad-hassan-riaz-8b5277262" }
+    ]
   },
   {
-    name: "Marcus Thorne",
-    role: "Head of Engineering",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop", // professional headshot
-    socials: ["github", "twitter"]
+    name: "Moin Ul Haq",
+    role: "Lead Developer",
+    image: "/m.png", // Make sure this file is inside 'public' folder
+    socials: [
+      { platform: "linkedin", url: "https://www.linkedin.com/in/moin-ul-haq-86840b355/" }
+    ]
   }
 ];
 
@@ -60,21 +66,34 @@ export function Team() {
               <div className="relative h-full bg-[#030014] p-1 rounded-xl">
                 <div className="relative h-[300px] overflow-hidden rounded-lg mb-4">
                   <div className="absolute inset-0 bg-[#7000FF]/20 mix-blend-overlay z-10 group-hover:bg-transparent transition-colors" />
-                  {/* Unsplash image for team member */}
-                  <img 
-                    src={member.image} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
-                  />
+                  
+                  {/* ZOOM OUT FIX: Added padding (p-3) and extra rounding */}
+<img 
+  src={member.image} 
+  alt={member.name} 
+  // Add 'p-3 rounded-2xl' to the classes below
+  className="w-full h-full object-cover p-4 rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500" 
+/>
                 </div>
                 <div className="p-4">
                   <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
                   <p className="text-[#00F0FF] text-sm font-medium mb-4">{member.role}</p>
+                  
                   <div className="flex gap-3 text-gray-400">
-                    {member.socials.includes("linkedin") && <Linkedin className="w-5 h-5 hover:text-white cursor-pointer" />}
-                    {member.socials.includes("twitter") && <Twitter className="w-5 h-5 hover:text-white cursor-pointer" />}
-                    {member.socials.includes("github") && <Github className="w-5 h-5 hover:text-white cursor-pointer" />}
+                    {member.socials.map((social, index) => (
+                      <a 
+                        key={index}
+                        href={social.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="hover:text-white transition-colors"
+                      >
+                        {social.platform === 'linkedin' && <Linkedin className="w-5 h-5" />}
+                        {social.platform === 'github' && <Github className="w-5 h-5" />}
+                      </a>
+                    ))}
                   </div>
+
                 </div>
               </div>
             </motion.div>
