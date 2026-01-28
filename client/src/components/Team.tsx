@@ -29,7 +29,7 @@ const team = [
   {
     name: "Areeba Shahzad",
     role: "UI/UX Designer",
-    image: "/g.png",
+    image: "/g.jpeg",
     socials: [] // ADDED THIS to prevent crash
   }
 ];
