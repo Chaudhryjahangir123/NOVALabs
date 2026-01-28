@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Rocket } from "lucide-react";
+import { Menu, X } from "lucide-react"; // 'Rocket' removed
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -46,11 +46,19 @@ export function Navbar() {
           className="flex items-center gap-2 group cursor-pointer z-50 relative" 
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          <div className="relative">
+          <div className="relative flex items-center justify-center">
+            {/* Glow Effect behind logo */}
             <div className="absolute inset-0 bg-[#00F0FF] blur-md opacity-50 group-hover:opacity-100 transition-opacity" />
-            <Rocket className="w-8 h-8 text-[#00F0FF] relative z-10" />
+            
+            {/* YOUR CUSTOM LOGO */}
+            <img 
+              src="/logo.png" 
+              alt="Nova Labs Logo" 
+              className="w-10 h-10 object-contain relative z-10" 
+            />
           </div>
-          <span className="text-2xl font-bold font-display tracking-tighter text-white">
+          
+          <span className="text-2xl font-bold font-display tracking-tighter text-white ml-2">
             NOVA<span className="text-[#00F0FF]">LABS</span>
           </span>
         </div>
