@@ -31,27 +31,27 @@ export function LuxuryParticles() {
           events: {
             onHover: {
               enable: true,
-              mode: "grab", // Stronger connection to mouse
+              mode: "grab",
             },
             resize: { enable: true },
           },
           modes: {
             grab: {
               distance: 200,
-              links: { opacity: 1 }, // Solid lines when hovering
+              links: { opacity: 0.8 }, // Strong connection on hover
             },
           },
         },
         particles: {
           color: {
-            value: "#C5A059", // Rich Metallic Gold
+            value: "#1C1917", // Changed to DARK BROWN / CHARCOAL
           },
           links: {
-            color: "#C5A059",
+            color: "#1C1917", // Links are also Dark Brown
             distance: 150,
             enable: true,
-            opacity: 0.6, // Much more visible lines
-            width: 1.5,   // Thicker lines
+            opacity: 0.4, // Visible lines
+            width: 1.2,
           },
           move: {
             direction: "none",
@@ -60,23 +60,23 @@ export function LuxuryParticles() {
               default: "bounce",
             },
             random: false,
-            speed: 2, // Faster movement (Alive!)
+            speed: 1.5, // Good movement speed
             straight: false,
           },
           number: {
             density: {
               enable: true,
             },
-            value: 100, // MORE particles
+            value: 80, // Plenty of particles
           },
           opacity: {
-            value: 0.8, // Almost fully solid (Very visible)
+            value: 0.6, // Dark and visible
           },
           shape: {
             type: "circle",
           },
           size: {
-            value: { min: 2, max: 4 }, // Much bigger dots
+            value: { min: 2, max: 4 }, // Nice visible dots
           },
         },
         detectRetina: true,
