@@ -16,7 +16,7 @@ export function Team() {
             transition={{ duration: 0.8 }}
             className="relative h-[600px] w-full"
           >
-            {/* Building (Stability/Structure) */}
+            {/* Building (Background - Kept B&W for contrast) */}
             <div className="absolute top-0 left-0 w-3/4 h-5/6 rounded-lg overflow-hidden shadow-2xl z-0">
                <div className="absolute inset-0 bg-black/10 mix-blend-multiply" />
                <img 
@@ -26,17 +26,18 @@ export function Team() {
                />
             </div>
 
-            {/* Professional (Human Connection) */}
+            {/* Professional (Foreground - NOW IN COLOR) */}
             <motion.div 
                initial={{ y: 20, opacity: 0 }}
                whileInView={{ y: 0, opacity: 1 }}
                transition={{ delay: 0.4, duration: 0.8 }}
                className="absolute bottom-0 right-4 w-2/3 h-4/6 rounded-lg overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-10 border-8 border-[#1C1917]"
             >
+               {/* Removed 'grayscale' class below */}
                <img 
                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1888&auto=format&fit=crop" 
                  alt="Professional Partner" 
-                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+                 className="w-full h-full object-cover" 
                />
             </motion.div>
           </motion.div>
