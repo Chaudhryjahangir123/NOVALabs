@@ -2,24 +2,30 @@ import { Rocket } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-[#02000e] border-t border-white/10 py-12">
+    // FIX: Removed bg-[#02000e], now transparent with a soft stone border
+    <footer className="bg-transparent border-t border-stone-200 py-12">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-2">
-            <Rocket className="w-6 h-6 text-[#00F0FF]" />
-            <span className="text-xl font-bold font-display text-white">
-              NOVA<span className="text-[#00F0FF]">LABS</span>
+          
+          {/* Logo Section */}
+          <div className="flex items-center gap-2 group">
+            {/* Rocket Icon: Dark Charcoal */}
+            <Rocket className="w-5 h-5 text-[#1C1917] group-hover:-translate-y-1 transition-transform duration-300" />
+            <span className="text-xl font-bold font-serif text-[#1C1917]">
+              NOVA<span className="text-[#D4C4A8]">LABS</span>
             </span>
           </div>
           
-          <div className="text-gray-500 text-sm">
-            &copy; {new Date().getFullYear()} Nova Labs. All systems operational.
+          {/* Copyright Text: Soft Stone Grey */}
+          <div className="text-stone-500 text-sm font-light tracking-wide">
+            &copy; {new Date().getFullYear()} Nova Labs. Est. 2024.
           </div>
           
+          {/* Links: Darken on hover */}
           <div className="flex gap-6">
-            <a href="#" className="text-gray-400 hover:text-[#00F0FF] transition-colors">Privacy</a>
-            <a href="#" className="text-gray-400 hover:text-[#00F0FF] transition-colors">Terms</a>
-            <a href="#" className="text-gray-400 hover:text-[#00F0FF] transition-colors">Twitter</a>
+            <a href="#" className="text-stone-400 hover:text-[#1C1917] transition-colors text-sm font-medium">Privacy</a>
+            <a href="#" className="text-stone-400 hover:text-[#1C1917] transition-colors text-sm font-medium">Terms</a>
+            <a href="#" className="text-stone-400 hover:text-[#1C1917] transition-colors text-sm font-medium">Twitter</a>
           </div>
         </div>
       </div>

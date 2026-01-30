@@ -10,7 +10,9 @@ import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#030014] text-white selection:bg-[#00F0FF] selection:text-[#030014]">
+    // FIX: Removed hardcoded bg-[#030014] and neon selection colors.
+    // Now uses the Theme variables defined in your new index.css
+    <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
       <Navbar />
       <Hero />
       <TechStack />

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,71 +6,78 @@
 
 :root {
   --font-body: 'Inter', sans-serif;
-  --font-display: 'Space Grotesk', sans-serif;
+  --font-display: 'Playfair Display', serif; /* Classy Serif for Headings */
 
-  /* Deep Space Dark Mode Theme */
-  --background: 249 100% 4%; /* #030014 */
-  --foreground: 210 40% 98%;
+  /* Old Money / Beige Aesthetic */
+  /* Background: Warm Cream (#FDFBF7) */
+  --background: 40 33% 98%; 
+  /* Foreground: Deep Charcoal (#1C1917) */
+  --foreground: 24 10% 10%;
 
-  --primary: 184 100% 50%; /* Cyan #00F0FF */
-  --primary-foreground: 249 100% 4%;
+  /* Primary: Muted Gold / Sand (#D4C4A8) */
+  --primary: 40 30% 75%;
+  --primary-foreground: 24 10% 10%;
 
-  --secondary: 266 100% 50%; /* Purple #7000FF */
-  --secondary-foreground: 210 40% 98%;
+  /* Secondary: Soft Sage or Pale Stone (#E5E0D8) */
+  --secondary: 40 20% 87%;
+  --secondary-foreground: 24 10% 10%;
 
-  --muted: 249 50% 10%;
-  --muted-foreground: 215 20% 65%;
+  --muted: 40 20% 92%;
+  --muted-foreground: 24 5% 45%;
 
-  --accent: 184 100% 50%;
-  --accent-foreground: 249 100% 4%;
+  /* Accent: Warm Terracotta or Deep Gold */
+  --accent: 35 25% 80%;
+  --accent-foreground: 24 10% 10%;
 
   --destructive: 0 84% 60%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive-foreground: 0 0% 98%;
 
-  --border: 249 30% 20%;
-  --input: 249 30% 20%;
-  --ring: 184 100% 50%;
+  --border: 40 20% 85%;
+  --input: 40 20% 85%;
+  --ring: 40 30% 70%;
 
-  --radius: 0.75rem;
+  --radius: 0.5rem;
 }
 
 @layer base {
   body {
-    @apply bg-[#030014] text-foreground antialiased selection:bg-[#00F0FF] selection:text-[#030014];
+    @apply bg-background text-foreground antialiased selection:bg-[#D4C4A8] selection:text-[#1C1917];
     font-family: var(--font-body);
+    /* Subtle paper grain texture overlay */
     background-image: 
-      radial-gradient(circle at 50% 0%, rgba(112, 0, 255, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 0% 50%, rgba(0, 240, 255, 0.1) 0%, transparent 40%);
+      radial-gradient(circle at 50% 0%, rgba(212, 196, 168, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 0% 100%, rgba(212, 196, 168, 0.1) 0%, transparent 40%);
     background-attachment: fixed;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    @apply tracking-tight font-bold;
+    @apply tracking-wide font-medium text-[#2A2622]; /* Slightly softer than pure black */
   }
 }
 
 @layer utilities {
+  /* Soft ambient glow instead of neon */
   .text-glow {
-    text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+    text-shadow: 0 0 30px rgba(212, 196, 168, 0.6);
   }
   
-  .text-glow-purple {
-    text-shadow: 0 0 20px rgba(112, 0, 255, 0.5);
-  }
-
+  /* White Frosted Glass */
   .glass-card {
-    @apply bg-black/40 backdrop-blur-xl border border-white/10 shadow-xl;
+    @apply bg-white/40 backdrop-blur-md border border-white/40 shadow-sm;
   }
 
+  /* Soft border glow */
   .neon-border {
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.3), inset 0 0 10px rgba(0, 240, 255, 0.1);
+    box-shadow: 0 0 15px rgba(212, 196, 168, 0.2), inset 0 0 15px rgba(255, 255, 255, 0.5);
+    @apply border-white/50;
   }
   
+  /* Subtle grid for structure */
   .grid-bg {
     background-size: 50px 50px;
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
     mask-image: radial-gradient(circle at center, black, transparent 80%);
   }
 }

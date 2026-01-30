@@ -1,18 +1,24 @@
 import { contactSubmissions, type InsertContactSubmission, type ContactSubmission } from "@shared/schema";
-import { db } from "./db";
 
 export interface IStorage {
   createContactSubmission(contact: InsertContactSubmission): Promise<ContactSubmission>;
 }
 
-export class DatabaseStorage implements IStorage {
+export class MemStorage implements IStorage {
+  private currentId = 1;
+  private submissions = new Map<number, ContactSubmission>();
+
   async createContactSubmission(contact: InsertContactSubmission): Promise<ContactSubmission> {
-    const [submission] = await db
-      .insert(contactSubmissions)
-      .values(contact)
-      .returning();
+    const id = this.currentId++;
+    const submission: ContactSubmission = { 
+      ...contact, 
+      id, 
+      createdAt: new Date(),
+      company: contact.company || null // This fixes the "undefined" error
+    };
+    this.submissions.set(id, submission);
     return submission;
   }
 }
 
-export const storage = new DatabaseStorage();
+export const storage = new MemStorage();

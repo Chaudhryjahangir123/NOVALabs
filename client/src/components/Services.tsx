@@ -1,45 +1,57 @@
 import { motion } from "framer-motion";
-import { Globe, Smartphone, Palette, Database, Layers, Code2 } from "lucide-react";
+import { Zap, Shield, Cpu } from "lucide-react";
 
 const services = [
-  { icon: Globe, title: "Web Development", desc: "Next.js & React applications with cutting-edge performance." },
-  { icon: Smartphone, title: "Mobile Apps", desc: "Native-feel cross-platform apps for iOS and Android." },
-  { icon: Palette, title: "UI/UX Design", desc: "Award-winning interfaces that users fall in love with." },
-  { icon: Database, title: "Enterprise Solutions", desc: "Scalable backend architectures and microservices." },
-  { icon: Layers, title: "Blockchain", desc: "Web3 integration and smart contract development." },
-  { icon: Code2, title: "DevOps", desc: "Automated CI/CD pipelines and cloud infrastructure." },
+  {
+    icon: Zap,
+    title: "Hyper Speed",
+    description: "Optimized for sub-second load times and silky smooth 60fps interactions."
+  },
+  {
+    icon: Shield,
+    title: "Military Grade",
+    description: "Enterprise-level security architecture protecting your data at every layer."
+  },
+  {
+    icon: Cpu,
+    title: "Infinite Scale",
+    description: "Cloud-native foundations built to handle millions of concurrent users."
+  }
 ];
 
 export function Services() {
   return (
-    <section id="services" className="py-24 bg-[#05011a]">
-      <div className="container mx-auto px-4">
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <span className="text-[#7000FF] font-semibold tracking-wider uppercase mb-2 block">Our Capabilities</span>
-          <h2 className="text-4xl md:text-5xl font-bold font-display text-white">Engineering Excellence</h2>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, i) => (
+    <section id="services" className="py-24 relative">
+      <div className="container px-4 mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {services.map((service, index) => (
             <motion.div
-              key={service.title}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              whileHover={{ scale: 1.02 }}
-              className="group p-8 border border-white/5 bg-[#030014] hover:bg-[#080224] hover:border-[#00F0FF]/30 transition-all duration-300 rounded-xl"
+              transition={{ delay: index * 0.2 }}
+              whileHover={{ y: -10 }}
+              // ADDED: 'group' class to trigger child hovers
+              // Changed transition-colors to transition-all for smoother glow animations
+              className="group p-8 rounded-lg bg-[#1C1917] border border-stone-800 hover:border-primary/40 transition-all duration-300 shadow-xl cursor-default"
             >
-              <div className="mb-6 inline-flex p-3 rounded-lg bg-[#00F0FF]/10 text-[#00F0FF] group-hover:bg-[#00F0FF] group-hover:text-black transition-colors">
-                <service.icon className="w-6 h-6" />
+              {/* Icon Circle - Now glows on parent hover */}
+              {/* Added: transition-all, group-hover:bg-primary/10, group-hover:shadow-[...] */}
+              <div className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-primary/10 group-hover:shadow-[0_0_20px_rgba(212,196,168,0.3)]">
+                
+                {/* Icon - Now gets brighter and has a drop-shadow on hover */}
+                {/* Added: transition-all, group-hover:text-primary-100, group-hover:drop-shadow-[...] */}
+                <service.icon className="w-7 h-7 text-primary-300 transition-all duration-300 group-hover:text-primary-100 group-hover:drop-shadow-[0_0_8px_rgba(212,196,168,0.8)]" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#00F0FF] transition-colors">{service.title}</h3>
-              <p className="text-gray-400 group-hover:text-gray-300 transition-colors">{service.desc}</p>
+
+              <h3 className="text-2xl font-serif font-medium mb-4 text-[#FDFBF7]">
+                {service.title}
+              </h3>
+              
+              <p className="text-stone-400 leading-relaxed">
+                {service.description}
+              </p>
             </motion.div>
           ))}
         </div>

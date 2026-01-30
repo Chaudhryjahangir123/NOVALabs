@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Linkedin, Github } from "lucide-react";
 
-// 1. Define Types (Fixes the "implicit any" errors)
+// 1. Define Types
 interface Social {
   platform: string;
   url: string;
@@ -20,7 +20,7 @@ interface TeamCardProps {
   isCEO?: boolean;
 }
 
-// 2. DATA (Typed)
+// 2. DATA
 const team: Member[] = [
   {
     name: "Chaudhry Jahangir",
@@ -54,7 +54,7 @@ const team: Member[] = [
   }
 ];
 
-// 3. REUSABLE CARD COMPONENT (With Types)
+// 3. REUSABLE CARD COMPONENT
 const TeamCard = ({ member, index, isCEO = false }: TeamCardProps) => {
   return (
     <motion.div
@@ -64,31 +64,39 @@ const TeamCard = ({ member, index, isCEO = false }: TeamCardProps) => {
       transition={{ delay: index * 0.2 }}
       className={`relative group ${isCEO ? 'w-full max-w-sm' : 'w-full'}`}
     >
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#00F0FF] to-[#7000FF] rounded-xl opacity-30 group-hover:opacity-100 blur transition duration-500" />
-      <div className="relative h-full bg-[#030014] p-1 rounded-xl">
+      {/* Glow Effect: Changed from Neon to Soft Gold */}
+      <div className="absolute -inset-0.5 bg-gradient-to-r from-[#D4C4A8] to-[#B8A383] rounded-xl opacity-20 group-hover:opacity-70 blur transition duration-700" />
+      
+      {/* Card Background: Dark Charcoal to match Services/Projects */}
+      <div className="relative h-full bg-[#1C1917] p-1 rounded-xl border border-stone-800">
         
         {/* Image Container */}
         <div className="relative h-[300px] overflow-hidden rounded-lg mb-4">
-          <div className="absolute inset-0 bg-[#7000FF]/20 mix-blend-overlay z-10 group-hover:bg-transparent transition-colors" />
+          {/* Overlay: Subtle warm tint instead of purple */}
+          <div className="absolute inset-0 bg-[#000000]/20 group-hover:bg-transparent transition-colors duration-500" />
           <img 
             src={member.image} 
             alt={member.name} 
-            className="w-full h-full object-cover p-4 rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500" 
+            // Kept grayscale for that "Classic Portrait" look, colored on hover
+            className="w-full h-full object-cover p-2 rounded-lg grayscale group-hover:grayscale-0 transition-all duration-700" 
           />
         </div>
 
         <div className="p-4 text-center md:text-left">
-          <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
-          <p className="text-[#00F0FF] text-sm font-medium mb-4">{member.role}</p>
+          {/* Name: Cream color, Serif Font */}
+          <h3 className="text-2xl font-serif font-medium text-[#FDFBF7] mb-1">{member.name}</h3>
           
-          <div className="flex gap-3 text-gray-400 justify-center md:justify-start">
+          {/* Role: Gold Color */}
+          <p className="text-[#D4C4A8] text-xs font-bold tracking-widest uppercase mb-4">{member.role}</p>
+          
+          <div className="flex gap-3 text-stone-400 justify-center md:justify-start">
             {member.socials?.map((social, idx) => (
               <a 
                 key={idx}
                 href={social.url}
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-white transition-colors"
+                className="hover:text-[#D4C4A8] transition-colors"
               >
                 {social.platform === 'linkedin' && <Linkedin className="w-5 h-5" />}
                 {social.platform === 'github' && <Github className="w-5 h-5" />}
@@ -107,8 +115,8 @@ export function Team() {
   const members = team.slice(1);
 
   return (
-    <section id="team" className="py-24 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#080224] to-transparent -z-10" />
+    // FIX: Transparent background to show the Beige body
+    <section id="team" className="py-24 relative overflow-hidden bg-transparent">
       
       <div className="container mx-auto px-4">
         {/* Header Section */}
@@ -118,8 +126,9 @@ export function Team() {
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold font-display text-white mb-4">The Minds Behind Nova</h2>
-            <p className="text-gray-400 max-w-xl mx-auto">A collective of visionaries, engineers, and strategists dedicated to pushing the boundaries of what's possible.</p>
+            {/* Dark Charcoal Text for Heading */}
+            <h2 className="text-4xl md:text-5xl font-medium font-serif text-foreground mb-4">The Minds Behind Nova</h2>
+            <p className="text-muted-foreground max-w-xl mx-auto font-light">A collective of visionaries, engineers, and strategists dedicated to pushing the boundaries of what's possible.</p>
           </motion.div>
         </div>
 
@@ -140,7 +149,8 @@ export function Team() {
             <motion.button 
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                className="px-8 py-3 border border-[#7000FF] text-[#7000FF] rounded-full hover:bg-[#7000FF] hover:text-white transition-all font-semibold"
+                // Button: Dark Charcoal Border & Text
+                className="px-8 py-3 border border-foreground text-foreground rounded-md hover:bg-foreground hover:text-[#FDFBF7] transition-all font-medium"
             >
                 Join the Team
             </motion.button>

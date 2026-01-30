@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Rocket } from "lucide-react"; // Added 'Rocket' back
+import { Menu, X, Rocket } from "lucide-react"; 
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -34,48 +34,49 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-[#030014]/90 backdrop-blur-lg border-b border-white/10 py-4"
+          ? "bg-white/80 backdrop-blur-md border-b border-stone-200/50 py-4 shadow-sm"
           : "bg-transparent py-6"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center relative">
         {/* Logo Section */}
         <div 
-          className="flex items-center gap-2 group cursor-pointer z-50 relative" 
+          className="flex items-center gap-3 group cursor-pointer z-50 relative" 
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           <div className="relative">
-            {/* Glow Effect */}
-            <div className="absolute inset-0 bg-[#00F0FF] blur-md opacity-50 group-hover:opacity-100 transition-opacity" />
+            {/* Soft Gold Glow behind logo */}
+            <div className="absolute inset-0 bg-primary blur-lg opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
             
-            {/* ORIGINAL ROCKET ICON RESTORED */}
-            <Rocket className="w-8 h-8 text-[#00F0FF] relative z-10" />
+            {/* Logo Icon - Dark Charcoal */}
+            <Rocket className="w-6 h-6 text-foreground relative z-10 group-hover:-translate-y-1 transition-transform duration-300" />
           </div>
           
-          <span className="text-2xl font-bold font-display tracking-tighter text-white">
-            NOVA<span className="text-[#00F0FF]">LABS</span>
+          <span className="text-xl font-serif font-bold tracking-tight text-foreground">
+            NOVA<span className="text-primary-400">LABS</span>
           </span>
         </div>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={(e) => scrollToSection(e, link.href)}
-              className="text-sm font-medium text-gray-300 hover:text-[#00F0FF] transition-colors relative group"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
             >
               {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00F0FF] transition-all group-hover:w-full" />
+              {/* Underline Effect */}
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
           <a
             href="#contact"
             onClick={(e) => scrollToSection(e, "#contact")}
-            className="px-6 py-2 rounded-full border border-[#00F0FF]/30 text-[#00F0FF] hover:bg-[#00F0FF] hover:text-[#030014] transition-all duration-300 font-semibold shadow-[0_0_10px_rgba(0,240,255,0.2)] hover:shadow-[0_0_20px_rgba(0,240,255,0.6)]"
+            className="px-6 py-2.5 rounded-md bg-[#1C1917] text-[#FDFBF7] text-sm font-medium hover:bg-foreground/90 transition-all duration-300 shadow-sm hover:shadow-md"
           >
             Start Project
           </a>
@@ -83,10 +84,10 @@ export function Navbar() {
 
         {/* Mobile Toggle Button */}
         <button
-          className="md:hidden text-white hover:text-[#00F0FF] transition-colors z-50 relative p-2"
+          className="md:hidden text-foreground hover:text-primary transition-colors z-50 relative p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
@@ -97,16 +98,16 @@ export function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 right-0 bg-[#030014] border-b border-white/10 shadow-2xl md:hidden block"
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="absolute top-0 left-0 right-0 min-h-screen bg-[#FDFBF7] md:hidden block pt-24"
           >
-            <div className="flex flex-col p-6 space-y-4 items-center">
+            <div className="flex flex-col p-6 space-y-6 items-center justify-center h-full">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => scrollToSection(e, link.href)}
-                  className="text-xl font-medium text-gray-300 hover:text-[#00F0FF] py-3 w-full text-center border-b border-white/5"
+                  className="text-2xl font-serif text-foreground/80 hover:text-foreground py-2"
                 >
                   {link.name}
                 </a>
@@ -114,7 +115,7 @@ export function Navbar() {
               <a
                 href="#contact"
                 onClick={(e) => scrollToSection(e, "#contact")}
-                className="mt-4 px-8 py-3 w-full text-center rounded-full bg-[#00F0FF] text-[#030014] font-bold"
+                className="mt-8 px-10 py-4 w-full max-w-xs text-center rounded-md bg-[#1C1917] text-[#FDFBF7] font-medium text-lg"
               >
                 Start Project
               </a>
